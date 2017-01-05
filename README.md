@@ -1,29 +1,38 @@
-# ROKOEmojie
+# ROKOMoji.iMessgae
+Build your own iMessage extension
 
-## Requirements
+## About ROKOmoji.iMessage
+Create your own iMessage extension with ROKO Labs! We've open sourced our emoji iMessage app so you can easily build your own emoji and sticker extension to promote your company and brand.
 
-Xcode 8
+The application is utilizing ROKO Mobi - http://roko.mobi - Stickers SDK to manage your keyboard and see analytics, all for free! 
 
-## Installation
+Should you have any questions or concerns, feel free to email us at help@rokolabs.com
 
-+ Clone or Download this project
+## Xcode Project Settings
+Open workspace in Xcode:
 
-+ Register here https://portal.roko.mobi/
-
-+ Configure Xcode Project with your own API KEY.
-[Follow this Tutorial](https://docs.roko.mobi/docs/ios_integration_guide_tut#section-3-configure-roko-mobi)
-
-To set your API KEY find in Constants.Swift file the following line and replace Your_API_KEY_goes_here with your key:
+1. Select Project Navigator View and choose your project name
+2. Select Holding App Target
+3. Complete the Bundle Identifier with your own Bundle info received from Apple Developer Site
+4. Complete the Provisioning profiles with info received from your Apple Developer Site
+5. Open Constants.Swift file, he following line and replace Your_API_KEY_goes_here with your key:
 ```
 let kAPIToken = "Your_API_KEY_goes_here"
 ```
 
-+ Create your own Sticker Packs.
-[Follow this Tutorial](https://docs.roko.mobi/docs/stickers)
 
-+ Run Xcode. Now iMessage Application downloads Stickers from Portal
+## Portal settings
+ROKO Mobi provides app developers and product owners with a suite of tools to accelerate mobile development, engage and track customers, and measure their app's success
 
-![Screenshot 1](https://api.monosnap.com/rpc/file/download?id=DgwULCbwTeiH3PJ3TCNJVXlzjaxf4N)
+See here for ROKO Mobi documentation, interaction guides, and instructions:
+https://docs.roko.mobi/docs/setting-up-your-account
 
+## Activate your new keyboard
+Run application on device or simulator and follow the instructions on the main screen.
 
-[More Info](https://docs.roko.mobi/docs)
+## Reference Links
+For Apple's iOS 10.0 Human Interface Guidelinse for iMessage extensions, please see below:
+https://developer.apple.com/ios/human-interface-guidelines/extensions/messaging/
+
+You can access the technical app extension programming guide on iMessage extentions here:
+https://developer.apple.com/reference/messages
