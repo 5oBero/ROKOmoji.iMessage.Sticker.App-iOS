@@ -1,0 +1,15 @@
+PODS:
+  - frmtst (1.9.79)
+  - UICollectionViewRightAlignedLayout (0.0.3)
+
+DEPENDENCIES:
+  - frmtst
+  - UICollectionViewRightAlignedLayout
+
+SPEC CHECKSUMS:
+  frmtst: 7f3a644a389c5b114172a6026cf5a0f6f44edce8
+  UICollectionViewRightAlignedLayout: 823eef8c567eba4a44c21bc2ffcb0d0d5f361e2d
+
+PODFILE CHECKSUM: d47e56c7fddc3dbf5d548f019dff02438fe068df
+
+COCOAPODS: 1.1.1

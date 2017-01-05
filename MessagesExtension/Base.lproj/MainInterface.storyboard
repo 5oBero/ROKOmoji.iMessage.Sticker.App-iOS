@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z9S-Pl-iF3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="SDV-nF-yN7">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="z9S-Pl-iF3" customClass="MainViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5T0-q9-IhI"/>
+                        <viewControllerLayoutGuide type="bottom" id="6vx-ue-gQj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nYf-32-tOT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUd-fA-UNw" customClass="MyStickersPanel" customModule="MessagesExtension" customModuleProvider="target">
+                                <rect key="frame" x="8" y="66" width="359" height="601"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqy-xg-qR6" userLabel="top">
+                                <rect key="frame" x="0.0" y="20" width="375" height="46"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rokolabs_logo" translatesAutoresizingMaskIntoConstraints="NO" id="aBm-ce-dut">
+                                        <rect key="frame" x="8" y="8" width="120" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="uVL-8K-RTn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qZd-7S-6gb" customClass="StickerPacksPanel" customModule="MessagesExtension" customModuleProvider="target">
+                                        <rect key="frame" x="165" y="4" width="200" height="38"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Aw1-ix-eJA"/>
+                                            <constraint firstAttribute="width" constant="200" id="upK-Qu-SBz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="6vK-Pd-HAb"/>
+                                    <constraint firstItem="aBm-ce-dut" firstAttribute="leading" secondItem="bqy-xg-qR6" secondAttribute="leading" constant="8" id="AkK-GY-my3"/>
+                                    <constraint firstItem="qZd-7S-6gb" firstAttribute="centerY" secondItem="bqy-xg-qR6" secondAttribute="centerY" id="EpX-kC-x4D"/>
+                                    <constraint firstItem="aBm-ce-dut" firstAttribute="top" secondItem="bqy-xg-qR6" secondAttribute="top" constant="8" id="K8j-Fi-C0j"/>
+                                    <constraint firstAttribute="trailing" secondItem="qZd-7S-6gb" secondAttribute="trailing" constant="10" id="iEv-T3-Z84"/>
+                                    <constraint firstAttribute="bottom" secondItem="aBm-ce-dut" secondAttribute="bottom" constant="8" id="nS1-Ac-l6e"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LUd-fA-UNw" secondAttribute="trailing" constant="8" id="JWJ-iG-Lsf"/>
+                            <constraint firstItem="LUd-fA-UNw" firstAttribute="leading" secondItem="nYf-32-tOT" secondAttribute="leading" constant="8" id="Pta-5P-9gy"/>
+                            <constraint firstItem="6vx-ue-gQj" firstAttribute="top" secondItem="LUd-fA-UNw" secondAttribute="bottom" id="Sxi-zN-RwC"/>
+                            <constraint firstItem="LUd-fA-UNw" firstAttribute="top" secondItem="bqy-xg-qR6" secondAttribute="bottom" id="eF7-sk-sYY"/>
+                            <constraint firstItem="bqy-xg-qR6" firstAttribute="leading" secondItem="nYf-32-tOT" secondAttribute="leading" id="lNP-V8-bSx"/>
+                            <constraint firstAttribute="trailing" secondItem="bqy-xg-qR6" secondAttribute="trailing" id="mnW-FH-P4m"/>
+                            <constraint firstItem="bqy-xg-qR6" firstAttribute="top" secondItem="5T0-q9-IhI" secondAttribute="bottom" id="yAB-WG-T78"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="logoImage" destination="aBm-ce-dut" id="97J-VT-U5u"/>
+                        <outlet property="stickersPackPanel" destination="qZd-7S-6gb" id="mCR-4m-Ip7"/>
+                        <outlet property="stickersPanel" destination="LUd-fA-UNw" id="EXC-kC-Cda"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1xw-M7-Ydg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="-559.07046476761627"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="rokolabs_logo" width="186" height="47"/>
+    </resources>
+</document>
