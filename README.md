@@ -1,4 +1,4 @@
-# ROKOMoji.iMessgae
+# ROKOMoji.iMessage
 Build your own iMessage extension
 
 ## About ROKOmoji.iMessage
