@@ -2,7 +2,7 @@
 Build your own iMessage extension
 
 ## About ROKOmoji.iMessage
-Create your own iMessage extension with ROKO Labs! We've open sourced our emoji iMessage app so you can easily build your own emoji and sticker extension to promote your company and brand.
+Create your own iMessage Sticker App with ROKO Labs! We've open sourced our iMessage sticker app so you can easily build your own to promote your company and brand!
 
 The application is utilizing ROKO Mobi - http://roko.mobi - Stickers SDK to manage your keyboard and see analytics, all for free! 
 
