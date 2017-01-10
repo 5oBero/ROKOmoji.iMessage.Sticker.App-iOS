@@ -9,15 +9,13 @@ end
 
 target 'MessagesExtension' do
 
-#pod 'ROKO.Mobi'
-pod 'frmtst'
+pod 'ROKO.Mobi'
 pod 'UICollectionViewRightAlignedLayout'
 
 end
 
 target 'iMessageTests' do
     
-#pod 'ROKO.Mobi'
-pod 'frmtst'
-    
+pod 'ROKO.Mobi'
+
 end

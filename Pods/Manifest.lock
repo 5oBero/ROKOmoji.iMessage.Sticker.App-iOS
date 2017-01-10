@@ -1,15 +1,15 @@
 PODS:
-  - frmtst (1.9.79)
+  - ROKO.Mobi (1.9.6)
   - UICollectionViewRightAlignedLayout (0.0.3)
 
 DEPENDENCIES:
-  - frmtst
+  - ROKO.Mobi
   - UICollectionViewRightAlignedLayout
 
 SPEC CHECKSUMS:
-  frmtst: 7f3a644a389c5b114172a6026cf5a0f6f44edce8
+  ROKO.Mobi: b51a3c56a55b832f86e677e6a5668a6462f94f27
   UICollectionViewRightAlignedLayout: 823eef8c567eba4a44c21bc2ffcb0d0d5f361e2d
 
-PODFILE CHECKSUM: d47e56c7fddc3dbf5d548f019dff02438fe068df
+PODFILE CHECKSUM: 1e43b33c4104eea3511502e525ebee4777cbacc0
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.1.0.rc.3

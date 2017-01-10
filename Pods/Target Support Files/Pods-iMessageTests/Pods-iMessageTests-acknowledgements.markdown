@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## frmtst
+## ROKO.Mobi
 
 Copyright (c) 2015, ROKO Labs LLC
 

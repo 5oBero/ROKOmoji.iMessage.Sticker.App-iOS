@@ -74,10 +74,10 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "frmtst/ROKOMobi.framework/ROKOMobiResources.bundle"
+  install_resource "ROKO.Mobi/Framework/ROKOMobi.framework/ROKOMobiResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "frmtst/ROKOMobi.framework/ROKOMobiResources.bundle"
+  install_resource "ROKO.Mobi/Framework/ROKOMobi.framework/ROKOMobiResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
