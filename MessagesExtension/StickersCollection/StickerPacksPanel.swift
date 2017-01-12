@@ -77,7 +77,7 @@ class StickerPacksPanel: UIView {
 extension StickerPacksPanel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let dataSource = dataSource {
-            return dataSource.numberOfStickerPacks()
+			return min(dataSource.numberOfStickerPacks(), 4)
         } else {
             return 0
         }
