@@ -10,7 +10,6 @@ end
 target 'MessagesExtension' do
 
 pod 'ROKO.Mobi'
-pod 'UICollectionViewRightAlignedLayout'
 
 end
 

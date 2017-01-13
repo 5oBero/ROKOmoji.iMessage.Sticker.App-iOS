@@ -8,7 +8,6 @@
 
 import UIKit
 import ROKOMobi
-import UICollectionViewRightAlignedLayout
 
 let stickerPackIconSize: CGFloat = 38.0
 let stickerPackSpacing: CGFloat = 15.0
@@ -77,7 +76,7 @@ class StickerPacksPanel: UIView {
 extension StickerPacksPanel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let dataSource = dataSource {
-			return min(dataSource.numberOfStickerPacks(), 4)
+            return dataSource.numberOfStickerPacks()
         } else {
             return 0
         }

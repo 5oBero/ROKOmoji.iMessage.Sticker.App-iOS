@@ -141,14 +141,14 @@ class MainViewController: MSMessagesAppViewController {
 		dataSource =  ROKOPortalStickersDataSource(manager: ROKOComponentManager.shared())
 		dataSource.reloadStickers { [weak self](object, error) in
 			if error == nil {
-				if let stickerPacks = object as? [ROKOStickerPack] {
+                if let stickerPacksRaw = object as? [ROKOStickerPack] {
+                    let stickerPacks = Array(stickerPacksRaw.prefix(kMaxPackCount)) 
 					self?.stickersDataProvider.initWithDataSource(stickerPacks: stickerPacks)
 					
 					var packsCount = stickerPacks.count
 					for pack in stickerPacks {
 						StickerCache.load(stickerPack: pack) { (pack) in
 							packsCount -= 1
-							//							print("packsCount = \(packsCount)")
 							if packsCount == 0 {
 								DispatchQueue.main.async() { () -> Void in
 									self?.stickersDataProvider.stickerPacks = stickerPacks

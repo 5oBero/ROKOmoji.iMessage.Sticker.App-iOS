@@ -42,6 +42,7 @@
 		8F3CC98F1E1500D2005F4302 /* Pack_167502184.image_167502245.png.Stickers in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CC9741E1500D2005F4302 /* Pack_167502184.image_167502245.png.Stickers */; };
 		8F3CC9901E1500D2005F4302 /* Pack_167502184.packIcon_5316562304159779188.png.Stickers in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CC9751E1500D2005F4302 /* Pack_167502184.packIcon_5316562304159779188.png.Stickers */; };
 		8F3CC9911E1500D2005F4302 /* Pack_167502184.selectedPackIcon_3593605876317852536.png.Stickers in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CC9761E1500D2005F4302 /* Pack_167502184.selectedPackIcon_3593605876317852536.png.Stickers */; };
+		8F41F4A01E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F41F49F1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m */; };
 		8F49FE2C1DED66AD000882D8 /* iMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49FE2B1DED66AD000882D8 /* iMessageTests.swift */; };
 		8F49FE311DED698D000882D8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEB56761DD302C800F89401 /* Constants.swift */; };
 		8F49FEA91DEDDC34000882D8 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49FEA71DEDDC34000882D8 /* StickerCell.swift */; };
@@ -128,6 +129,9 @@
 		8F3CC9741E1500D2005F4302 /* Pack_167502184.image_167502245.png.Stickers */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pack_167502184.image_167502245.png.Stickers; sourceTree = "<group>"; };
 		8F3CC9751E1500D2005F4302 /* Pack_167502184.packIcon_5316562304159779188.png.Stickers */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pack_167502184.packIcon_5316562304159779188.png.Stickers; sourceTree = "<group>"; };
 		8F3CC9761E1500D2005F4302 /* Pack_167502184.selectedPackIcon_3593605876317852536.png.Stickers */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pack_167502184.selectedPackIcon_3593605876317852536.png.Stickers; sourceTree = "<group>"; };
+		8F41F49E1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewRightAlignedLayout.h; sourceTree = "<group>"; };
+		8F41F49F1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewRightAlignedLayout.m; sourceTree = "<group>"; };
+		8F41F4AA1E28AC340066EA74 /* iMessageStickers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iMessageStickers-Bridging-Header.h"; sourceTree = "<group>"; };
 		8F49FE291DED66AD000882D8 /* iMessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F49FE2B1DED66AD000882D8 /* iMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMessageTests.swift; sourceTree = "<group>"; };
 		8F49FE2D1DED66AD000882D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -249,6 +253,15 @@
 			path = Utilites;
 			sourceTree = "<group>";
 		};
+		8F41F49D1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout */ = {
+			isa = PBXGroup;
+			children = (
+				8F41F49E1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.h */,
+				8F41F49F1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m */,
+			);
+			path = UICollectionViewRightAlignedLayout;
+			sourceTree = "<group>";
+		};
 		8F49FE2A1DED66AD000882D8 /* iMessageTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +316,8 @@
 		8FD4FA871D9E3884006B8003 /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				8F41F4AA1E28AC340066EA74 /* iMessageStickers-Bridging-Header.h */,
+				8F41F49D1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout */,
 				8F0F56191DF0AE3F0012C389 /* WarmCache */,
 				8F101A581DE3233D00901DE2 /* Utilites */,
 				8FEB56751DD302C800F89401 /* StickersCollection */,
@@ -654,6 +669,7 @@
 				8FEB56861DD302C800F89401 /* StickerPacksPanel.swift in Sources */,
 				8F101A5D1DE3233D00901DE2 /* StickerCache.swift in Sources */,
 				8FEB56881DD302C800F89401 /* StickersPanel.swift in Sources */,
+				8F41F4A01E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m in Sources */,
 				8F49FEA91DEDDC34000882D8 /* StickerCell.swift in Sources */,
 				8F49FEAC1DEDDE6D000882D8 /* MyStickersPanel.swift in Sources */,
 				8FEB56871DD302C800F89401 /* StickersDataProvider.swift in Sources */,
@@ -818,6 +834,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/iMessageStickers-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -837,6 +854,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/iMessageStickers-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
