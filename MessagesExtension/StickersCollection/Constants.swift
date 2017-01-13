@@ -8,8 +8,7 @@
 
 import Foundation
 
-let kAPIToken = "LHkjx7wblhtBpUMg7dWymwC3xRf6DmkLnz7neIdKA/4="
-//let kAPIToken = "Your_API_KEY_goes_here"
+let kAPIToken = "Your_API_KEY_goes_here"
 let kBaseURL = "api.roko.mobi/v1/"
 
 let kMaxPackCount = 4
