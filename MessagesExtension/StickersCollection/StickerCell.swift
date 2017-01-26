@@ -54,6 +54,7 @@ class StickerCell: UICollectionViewCell {
 				let msSticker = try MSSticker(contentsOfFileURL: url, localizedDescription: "")
 				stickerView.sticker = msSticker
 				stickerView.sizeToFit()
+				stickerView.startAnimating()
 			} else {
 				stickerView.sticker = nil;
 //				print ("No image exist: \(url.path)")
