@@ -8,7 +8,8 @@
 
 import Foundation
 
-let kAPIToken = "Your_API_KEY_goes_here"
+// Production test app
+let kAPIToken = "Ex9fiZs3VOUT1MIhMyVhAmZzUPERwzphEDhwQtmuUX8="
 let kBaseURL = "api.roko.mobi/v1/"
 
 let kMaxPackCount = 4
