@@ -12,15 +12,10 @@ let kAPIToken = "Your_API_KEY_goes_here"
 let kBaseURL = "api.roko.mobi/v1/"
 
 let kMaxPackCount = 4
-let kPressPasteTitleShowDuration = 2.5
-let kPressPasteTitleAppearDuration = 0.5
-let kGreetingText = "Check out the ROKOmojis Keyboard! "
-let kAppLink = "www.roko.mobi"
-
 let kLastPackKey = "LastPackKey"
 
-let kInfoAlertTitle = "ROKOmoji Sticker v%@"
-let kInfoAlertMessage = "\n Thank you for downloading \n ROKOmoji Stickers! \n\n Check out roko.mobi/stickers to \n learn about how you can build your \n own iMessage sticker app. \n\n We also open-sourced this iMessage \n Sticker App. Learn more at github.com/ROKOLabs/ROKOMoji.iMessage.iOS"
+let kInfoAlertTitle = "%@ v%@"
+let kInfoAlertMessage = "\n Thank you for downloading \n %@! \n\n Check out roko.mobi/stickers to \n learn about how you can build your \n own iMessage sticker app. \n\n We also open-sourced this iMessage \n Sticker App. Learn more at github.com/ROKOLabs/ROKOMoji.iMessage.iOS"
 
 
 

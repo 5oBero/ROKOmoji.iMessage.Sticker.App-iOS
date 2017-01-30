@@ -47,9 +47,7 @@ class MyStickersPanel: UIView {
         set(newSize) {
             if (newSize.width != _iconSize.width || newSize.height != _iconSize.height) {
                 _iconSize = newSize
-                print("reload")
                 collectionView.reloadData()
-                collectionView.collectionViewLayout.invalidateLayout()
             }
         }
         get {
@@ -120,7 +118,6 @@ extension MyStickersPanel: UICollectionViewDelegate {
 
 extension MyStickersPanel : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(indexPath.row)
         return iconSize
     }
 }
