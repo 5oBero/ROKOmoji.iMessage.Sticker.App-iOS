@@ -23,7 +23,7 @@ class MyStickersPanel: UIView {
     var dataSource: StickerDataSource?
     weak var delegate: MyStickersPanelDelegate?
     var collectionView: UICollectionView!
-    var flowLayout: UICollectionViewFlowLayout!
+    
     var selectedPackIndex: Int = 0
     var _iconSize = CGSize(width: stickerIconSize, height: stickerIconSize)
     var _stickerSize = MSStickerSize.large
@@ -34,13 +34,8 @@ class MyStickersPanel: UIView {
             let screenWidth = UIScreen.main.bounds.size.width
             switch newSize {
             case .large: iconSize = CGSize(width: screenWidth / 2 + sizeDelta, height: screenWidth / 2 + sizeDelta)
-                print("large")
-                
             case .regular: iconSize = CGSize(width: screenWidth / 3 + sizeDelta, height: screenWidth / 3 + sizeDelta)
-                print("regular")
-                
             case .small: iconSize = CGSize(width: screenWidth / 4 + sizeDelta, height: screenWidth / 4 + sizeDelta)
-                print("small")
             }
         }
         get {
@@ -54,7 +49,7 @@ class MyStickersPanel: UIView {
                 _iconSize = newSize
                 print("reload")
                 collectionView.reloadData()
-                flowLayout.invalidateLayout()
+                collectionView.collectionViewLayout.invalidateLayout()
             }
         }
         get {
@@ -65,7 +60,7 @@ class MyStickersPanel: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        flowLayout = UICollectionViewFlowLayout()
+        let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = iconSize
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = MyStickersPanel.stickerSpacing
@@ -125,6 +120,7 @@ extension MyStickersPanel: UICollectionViewDelegate {
 
 extension MyStickersPanel : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print(indexPath.row)
         return iconSize
     }
 }
