@@ -19,6 +19,8 @@ class MainViewController: MSMessagesAppViewController {
 	@IBOutlet weak var packsPanelTopConstraint: NSLayoutConstraint!
 	@IBOutlet weak var logoImage: UIImageView!
 	
+    @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var slider: UISlider!
 	var dataSource: ROKOPortalStickersDataSource!
 	var stickersDataProvider = StickersDataProvider()
 	var guid = NSUUID().uuidString
@@ -47,6 +49,7 @@ class MainViewController: MSMessagesAppViewController {
 		}
 		
 		self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background"));
+        updateBottomComponents(isHide: true)
 	}
 	
 	
@@ -104,7 +107,7 @@ class MainViewController: MSMessagesAppViewController {
 	
 	override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
 		currentOffet = self.stickersPanel.collectionView.contentOffset
-	}
+    }
 	
 	override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
 		guard let collectionView = self.stickersPanel.collectionView else {return}
@@ -113,6 +116,7 @@ class MainViewController: MSMessagesAppViewController {
 			currentOffet = CGPoint(x:0, y:0)
 		}
 		self.stickersPanel.collectionView.contentOffset = currentOffet
+        updateBottomComponents(isHide: presentationStyle == .compact)
 	}
 	
 	func configureStikers(){
@@ -163,6 +167,28 @@ class MainViewController: MSMessagesAppViewController {
 			}
 		}
 	}
+    
+    @IBAction func clickInfoButton(_ sender: Any) {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String  ?? "1.0"
+        let alertController = UIAlertController(title: String(format: kInfoAlertTitle, version), message: kInfoAlertMessage, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Dismiss", style: .default) {
+            (result : UIAlertAction) -> Void in
+            print("Dismiss")
+        }
+        
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
+    
+    @IBAction func sliderDidChange(_ sender: Any) {
+    
+    }
+    
+    func updateBottomComponents(isHide: Bool) {
+        infoButton.isHidden = isHide
+        slider.isHidden = isHide
+    }
 }
 
 extension MainViewController: StickerPacksPanelDelegate {

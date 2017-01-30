@@ -19,3 +19,8 @@ let kAppLink = "www.roko.mobi"
 
 let kLastPackKey = "LastPackKey"
 
+let kInfoAlertTitle = "ROKOmoji Sticker v%@"
+let kInfoAlertMessage = "Thank you for downloading ROKOmoji Stickers! \n Check out roko.mobi/stickers to learn about how you can build your own iMessage sticker app. \n We also open-sourced this iMessage Sticker App. Learn more at github.com/ROKOLabs/ROKOMoji.iMessage.iOS"
+
+
+
