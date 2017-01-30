@@ -436,12 +436,12 @@
 					8FD4FA751D9E3884006B8003 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UA6LKF8Y8H;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					8FD4FA7F1D9E3884006B8003 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UA6LKF8Y8H;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -837,8 +837,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4d5adfaf-9fa2-44f2-8e50-2c51d20c18ba";
+				PROVISIONING_PROFILE_SPECIFIER = ROKODevelopment;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/iMessageStickers-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -851,14 +851,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = UA6LKF8Y8H;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "5cf40c04-bffb-40be-bf79-f3b666d016c0";
+				PROVISIONING_PROFILE_SPECIFIER = "ROKOMojieExtension-AppStore";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MessagesExtension/iMessageStickers-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -876,8 +876,8 @@
 				INFOPLIST_FILE = iMessageStickers/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4d5adfaf-9fa2-44f2-8e50-2c51d20c18ba";
+				PROVISIONING_PROFILE_SPECIFIER = ROKODevelopment;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -889,13 +889,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = UA6LKF8Y8H;
 				INFOPLIST_FILE = iMessageStickers/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "39eb0ec7-870c-4cee-965d-7c3ceeca46dd";
+				PROVISIONING_PROFILE_SPECIFIER = "ROKOMojie-AppStore";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
