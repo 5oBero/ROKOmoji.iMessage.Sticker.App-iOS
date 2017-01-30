@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -53,21 +54,46 @@
                                     <constraint firstAttribute="bottom" secondItem="aBm-ce-dut" secondAttribute="bottom" constant="8" id="nS1-Ac-l6e"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5c-Uq-yrM">
+                                <rect key="frame" x="345" y="637" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="jmR-jg-q2O"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="suU-mT-xjA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="tFc-jd-PeN"/>
+                                    <constraint firstAttribute="width" constant="22" id="yhq-zV-xUR"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="clickInfoButton:" destination="z9S-Pl-iF3" eventType="touchUpInside" id="TSr-en-Cmy"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-RS-qKt">
+                                <rect key="frame" x="30" y="629" width="301" height="31"/>
+                                <connections>
+                                    <action selector="sliderDidChange:" destination="z9S-Pl-iF3" eventType="valueChanged" id="56Z-Kp-Ssk"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="c5c-Uq-yrM" firstAttribute="leading" secondItem="cq9-RS-qKt" secondAttribute="trailing" constant="16" id="9cJ-YP-h6t"/>
+                            <constraint firstItem="cq9-RS-qKt" firstAttribute="leading" secondItem="nYf-32-tOT" secondAttribute="leadingMargin" constant="16" id="D8Z-a7-B4U"/>
                             <constraint firstAttribute="trailing" secondItem="LUd-fA-UNw" secondAttribute="trailing" constant="8" id="JWJ-iG-Lsf"/>
                             <constraint firstItem="LUd-fA-UNw" firstAttribute="leading" secondItem="nYf-32-tOT" secondAttribute="leading" constant="8" id="Pta-5P-9gy"/>
                             <constraint firstItem="6vx-ue-gQj" firstAttribute="top" secondItem="LUd-fA-UNw" secondAttribute="bottom" id="Sxi-zN-RwC"/>
+                            <constraint firstItem="6vx-ue-gQj" firstAttribute="top" secondItem="cq9-RS-qKt" secondAttribute="bottom" constant="8" id="cK3-iq-blV"/>
                             <constraint firstItem="LUd-fA-UNw" firstAttribute="top" secondItem="bqy-xg-qR6" secondAttribute="bottom" id="eF7-sk-sYY"/>
                             <constraint firstItem="bqy-xg-qR6" firstAttribute="leading" secondItem="nYf-32-tOT" secondAttribute="leading" id="lNP-V8-bSx"/>
                             <constraint firstAttribute="trailing" secondItem="bqy-xg-qR6" secondAttribute="trailing" id="mnW-FH-P4m"/>
+                            <constraint firstItem="6vx-ue-gQj" firstAttribute="top" secondItem="c5c-Uq-yrM" secondAttribute="bottom" constant="8" id="rQA-YI-f2h"/>
+                            <constraint firstAttribute="trailing" secondItem="c5c-Uq-yrM" secondAttribute="trailing" constant="8" id="rh1-Pg-NRd"/>
                             <constraint firstItem="bqy-xg-qR6" firstAttribute="top" secondItem="5T0-q9-IhI" secondAttribute="bottom" id="yAB-WG-T78"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
+                        <outlet property="infoButton" destination="c5c-Uq-yrM" id="m59-D2-XJl"/>
                         <outlet property="logoImage" destination="aBm-ce-dut" id="97J-VT-U5u"/>
+                        <outlet property="slider" destination="cq9-RS-qKt" id="EhT-sD-U5T"/>
                         <outlet property="stickersPackPanel" destination="qZd-7S-6gb" id="mCR-4m-Ip7"/>
                         <outlet property="stickersPanel" destination="LUd-fA-UNw" id="EXC-kC-Cda"/>
                     </connections>
@@ -78,6 +104,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rokolabs_logo" width="186" height="47"/>
+        <image name="rokolabs_logo" width="176" height="35"/>
     </resources>
 </document>

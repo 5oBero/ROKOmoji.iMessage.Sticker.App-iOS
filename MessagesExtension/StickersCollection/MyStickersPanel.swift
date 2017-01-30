@@ -12,12 +12,13 @@ import Messages
 
 protocol MyStickersPanelDelegate: class {
     func didSelect(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int)
-	func didDrag(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int)
+    func didDrag(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int)
 }
 
 class MyStickersPanel: UIView {
     static let stickerIconSize: CGFloat = 100.0
     static let stickerSpacing: CGFloat = 17.0
+    let sizeDelta: CGFloat = -MyStickersPanel.stickerSpacing
     
     var dataSource: StickerDataSource?
     weak var delegate: MyStickersPanelDelegate?
@@ -30,11 +31,11 @@ class MyStickersPanel: UIView {
     var stickerSize: MSStickerSize {
         set(newSize) {
             _stickerSize = newSize
-			let screenWidth = UIScreen.main.bounds.size.width
+            let screenWidth = UIScreen.main.bounds.size.width
             switch newSize {
-            case .large: _iconSize = CGSize(width: screenWidth / 2, height: screenWidth / 2)
-            case .regular: _iconSize = CGSize(width: screenWidth / 3, height: screenWidth / 3)
-            case .small: _iconSize = CGSize(width: screenWidth / 4, height: screenWidth / 4)
+            case .large: iconSize = CGSize(width: screenWidth / 2 + sizeDelta, height: screenWidth / 2 + sizeDelta)
+            case .regular: iconSize = CGSize(width: screenWidth / 3 + sizeDelta, height: screenWidth / 3 + sizeDelta)
+            case .small: iconSize = CGSize(width: screenWidth / 4 + sizeDelta, height: screenWidth / 4 + sizeDelta)
             }
         }
         get {
@@ -42,10 +43,12 @@ class MyStickersPanel: UIView {
         }
     }
     
-    var iconSize: CGSize {
+    fileprivate var iconSize: CGSize {
         set(newSize) {
-            _iconSize = newSize
-            collectionView.reloadData()
+            if (newSize.width != _iconSize.width || newSize.height != _iconSize.height) {
+                _iconSize = newSize
+                collectionView.reloadData()
+            }
         }
         get {
             return _iconSize
@@ -60,6 +63,7 @@ class MyStickersPanel: UIView {
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = MyStickersPanel.stickerSpacing
         flowLayout.minimumLineSpacing = MyStickersPanel.stickerSpacing
+        flowLayout.invalidateLayout()
         
         collectionView = StickerCollectionView(frame: self.frame, collectionViewLayout: flowLayout)
         collectionView.delegate = self
@@ -98,7 +102,7 @@ extension MyStickersPanel: UICollectionViewDataSource {
         
         cell.configure(for: stickerInfo, inPack: pack)
         cell.stickerCellDelegate = self
-		cell.position = indexPath.row
+        cell.position = indexPath.row
         return cell
     }
 }

@@ -43,6 +43,7 @@
 		8F3CC9901E1500D2005F4302 /* Pack_167502184.packIcon_5316562304159779188.png.Stickers in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CC9751E1500D2005F4302 /* Pack_167502184.packIcon_5316562304159779188.png.Stickers */; };
 		8F3CC9911E1500D2005F4302 /* Pack_167502184.selectedPackIcon_3593605876317852536.png.Stickers in Resources */ = {isa = PBXBuildFile; fileRef = 8F3CC9761E1500D2005F4302 /* Pack_167502184.selectedPackIcon_3593605876317852536.png.Stickers */; };
 		8F41F4A01E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F41F49F1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m */; };
+		8F4378CA1E3F577C0071D200 /* MSStickerSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4378C91E3F577C0071D200 /* MSStickerSizeExtension.swift */; };
 		8F49FE2C1DED66AD000882D8 /* iMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49FE2B1DED66AD000882D8 /* iMessageTests.swift */; };
 		8F49FE311DED698D000882D8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEB56761DD302C800F89401 /* Constants.swift */; };
 		8F49FEA91DEDDC34000882D8 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F49FEA71DEDDC34000882D8 /* StickerCell.swift */; };
@@ -132,6 +133,7 @@
 		8F41F49E1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewRightAlignedLayout.h; sourceTree = "<group>"; };
 		8F41F49F1E28A54B0066EA74 /* UICollectionViewRightAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewRightAlignedLayout.m; sourceTree = "<group>"; };
 		8F41F4AA1E28AC340066EA74 /* iMessageStickers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iMessageStickers-Bridging-Header.h"; sourceTree = "<group>"; };
+		8F4378C91E3F577C0071D200 /* MSStickerSizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSStickerSizeExtension.swift; sourceTree = "<group>"; };
 		8F49FE291DED66AD000882D8 /* iMessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F49FE2B1DED66AD000882D8 /* iMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMessageTests.swift; sourceTree = "<group>"; };
 		8F49FE2D1DED66AD000882D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				8FEB56761DD302C800F89401 /* Constants.swift */,
+				8F4378C91E3F577C0071D200 /* MSStickerSizeExtension.swift */,
 				8FEB56771DD302C800F89401 /* StickerDataSource.swift */,
 				8F49FEA71DEDDC34000882D8 /* StickerCell.swift */,
 				8F49FEA81DEDDC34000882D8 /* StickerCell.xib */,
@@ -432,10 +435,12 @@
 					};
 					8FD4FA751D9E3884006B8003 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = UA6LKF8Y8H;
 						ProvisioningStyle = Automatic;
 					};
 					8FD4FA7F1D9E3884006B8003 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = UA6LKF8Y8H;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -664,6 +669,7 @@
 				8FEB56821DD302C800F89401 /* StickerIcon.swift in Sources */,
 				8FEB56891DD302C800F89401 /* UIImage+Scale.swift in Sources */,
 				8FA8342C1DE43DDC0082881B /* MainViewController.swift in Sources */,
+				8F4378CA1E3F577C0071D200 /* MSStickerSizeExtension.swift in Sources */,
 				8F101A5E1DE3233D00901DE2 /* StickerLoader.swift in Sources */,
 				8FEB56811DD302C800F89401 /* StickerDataSource.swift in Sources */,
 				8FEB56861DD302C800F89401 /* StickerPacksPanel.swift in Sources */,
@@ -826,7 +832,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UA6LKF8Y8H;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie.extension;
@@ -846,7 +852,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UA6LKF8Y8H;
 				INFOPLIST_FILE = MessagesExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie.extension;
@@ -866,7 +872,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UA6LKF8Y8H;
 				INFOPLIST_FILE = iMessageStickers/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -884,7 +890,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UA6LKF8Y8H;
 				INFOPLIST_FILE = iMessageStickers/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rokolabs.rokomojie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
