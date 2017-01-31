@@ -170,9 +170,9 @@ class MainViewController: MSMessagesAppViewController {
     
     @IBAction func clickInfoButton(_ sender: Any) {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String  ?? "1.0"
-        let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "Stickers"
-        let alertController = UIAlertController(title: String(format: kInfoAlertTitle, appName, version),
-                                                message: String(format:kInfoAlertMessage, appName), preferredStyle: .alert)
+        let alertController = UIAlertController(title: String(format: kInfoAlertTitle, version),
+                                                message: kInfoAlertMessage,
+                                                preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Dismiss", style: .default) {
             (result : UIAlertAction) -> Void in
