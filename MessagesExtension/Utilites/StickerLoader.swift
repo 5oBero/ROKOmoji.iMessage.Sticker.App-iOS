@@ -9,7 +9,7 @@
 import UIKit
 import ROKOMobi
 
-let kIconSize: CGFloat = 408.0
+let kIconSize: CGFloat = 618.0
 
 class StickerLoader: NSObject {
     let pack: ROKOStickerPack
