@@ -32,7 +32,8 @@ class StickerCell: UICollectionViewCell {
         super.awakeFromNib()
         
         stickerView.isUserInteractionEnabled = true
-
+		stickerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         tap.addTarget(self, action: #selector(onSingleTap))
         tap.delegate = self
         stickerView.addGestureRecognizer(tap)
@@ -40,7 +41,7 @@ class StickerCell: UICollectionViewCell {
         longTap.addTarget(self, action: #selector(StickerCell.onLongPress))
         longTap.delegate = self
         stickerView.addGestureRecognizer(longTap)
-		self.backgroundColor = UIColor.clear
+		backgroundColor = UIColor.clear
 		stickerView.backgroundColor = UIColor.clear
     }
 
@@ -53,10 +54,9 @@ class StickerCell: UICollectionViewCell {
 			if FileManager.default.fileExists(atPath: url.path) {
 				let msSticker = try MSSticker(contentsOfFileURL: url, localizedDescription: "")
 				stickerView.sticker = msSticker
-				stickerView.sizeToFit()
+				stickerView.startAnimating()
 			} else {
 				stickerView.sticker = nil;
-//				print ("No image exist: \(url.path)")
 			}
 		} catch {
 //            print("error: \(error)")
