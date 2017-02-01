@@ -9,6 +9,8 @@ import UIKit
 import Messages
 import ROKOMobi
 
+let sliderValueKey = "sliderValueKey"
+
 class MainViewController: MSMessagesAppViewController {
     let packsPanelTopConstant:CGFloat = 84
     
@@ -40,14 +42,21 @@ class MainViewController: MSMessagesAppViewController {
         
         view.backgroundColor = stickersConfig.backgroundColor
         logoImage.image = UIImage(named: stickersConfig.logoFileName)
-        
-        stickersPanel.stickerSize = stickersConfig.stickerSize
-        slider.value = Float(stickersConfig.stickerSize.rawValue)
-        stickersDataProvider.getWarmCache {
-            self.stickersPackPanel.reloadCollection()
-            self.stickersPanel.reloadCollection()
+		
+		let sliderValue = UserDefaults.standard.value(forKey: sliderValueKey)
+		if sliderValue != nil {
+			slider.value = sliderValue as! Float
+			sliderDidChange(slider)
+		} else {
+			stickersPanel.stickerSize = stickersConfig.stickerSize
+			slider.value = Float(stickersConfig.stickerSize.rawValue)
+		}
+		
+		stickersDataProvider.getWarmCache {
+			self.stickersPackPanel.reloadCollection()
+			self.stickersPanel.reloadCollection()
         }
-        
+		
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background"));
         updateBottomComponents(isHide: true)
     }
@@ -68,6 +77,7 @@ class MainViewController: MSMessagesAppViewController {
     override func viewWillDisappear(_ animated: Bool) {
         let interval = Date().timeIntervalSince(activateTime)
         self.saveTime(interval)
+		UserDefaults.standard.set(self.slider.value, forKey: sliderValueKey)
     }
     
     // MARK: - Conversation Handling
