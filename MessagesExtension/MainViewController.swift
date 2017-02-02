@@ -27,7 +27,7 @@ class MainViewController: MSMessagesAppViewController {
     var stickersDataProvider = StickersDataProvider()
     var guid = NSUUID().uuidString
     var deepLink: String? = nil
-    var stickersConfig = StickersConfig(stickerSize: .small, backgroundColor: #colorLiteral(red: 0.9719446301, green: 0.9719673991, blue: 0.9719551206, alpha: 1), logoFileName: "rokolabs_logo")
+    var stickersConfig = StickersConfig(stickerSize: .small, backgroundColor: #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1), logoFileName: "rokolabs_logo")
     var firstTime = true
     
     // For Analitics
