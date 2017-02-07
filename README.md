@@ -4,7 +4,7 @@ Build your own iMessage extension
 ## About ROKOmoji.iMessage
 Create your own iMessage Sticker App with ROKO Labs! We've open sourced our iMessage sticker app so you can easily build your own to promote your company and brand!
 
-The application is utilizing ROKO Mobi - http://roko.mobi - Stickers SDK to manage your keyboard and see analytics, all for free! 
+The application is utilizing ROKO Mobi - http://roko.mobi - Stickers SDK to manage your iMessage App and see analytics, all for free! 
 
 Should you have any questions or concerns, feel free to email us at help@rokolabs.com
 
@@ -27,11 +27,11 @@ ROKO Mobi provides app developers and product owners with a suite of tools to ac
 See here for ROKO Mobi documentation, interaction guides, and instructions:
 https://docs.roko.mobi/docs/setting-up-your-account
 
-## Activate your new keyboard
+## Activate your new iMessage App
 Run application on device or simulator and follow the instructions on the main screen.
 
 ## Reference Links
-For Apple's iOS 10.0 Human Interface Guidelinse for iMessage extensions, please see below:
+For Apple's iOS 10.0 Human Interface Guidelines for iMessage extensions, please see below:
 https://developer.apple.com/ios/human-interface-guidelines/extensions/messaging/
 
 You can access the technical app extension programming guide on iMessage extentions here:
