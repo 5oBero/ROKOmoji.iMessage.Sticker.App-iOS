@@ -26,11 +26,11 @@ class MainViewController: MSMessagesAppViewController {
     var dataSource: ROKOPortalStickersDataSource!
     var stickersDataProvider = StickersDataProvider()
     var guid = NSUUID().uuidString
-    var deepLink: String? = nil
     var stickersConfig = StickersConfig(stickerSize: .small, backgroundColor: #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1), logoFileName: "rokolabs_logo")
     var firstTime = true
     
     // For Analitics
+	var linkManager: ROKOLinkManager?
     var info: RLStickerInfo?
     var packInfo: RLStickerPackInfo?
     var item: ROKOStickersEventItem?
@@ -69,6 +69,10 @@ class MainViewController: MSMessagesAppViewController {
         } else {
             ROKOLogger.addEvent("_ROKO.Active User", withParameters: nil)
         }
+		
+		// Workaround for deeplinks receiving
+		NotificationCenter.default.post(Notification.init(name: .UIApplicationDidBecomeActive))
+		
         activateTime = Date()
         self.sendSavedEvent()
     }
@@ -131,7 +135,9 @@ class MainViewController: MSMessagesAppViewController {
     func configureStikers(){
         ROKOComponentManager.shared().apiToken = kAPIToken
         ROKOComponentManager.shared().baseURL = kBaseURL
-        
+		
+		linkManager = ROKOLinkManager.init(manager: ROKOComponentManager.shared())
+		
         stickersPackPanel.delegate = self
         stickersPanel.delegate = self
         
