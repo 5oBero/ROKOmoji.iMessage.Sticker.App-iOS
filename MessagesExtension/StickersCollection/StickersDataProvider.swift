@@ -22,7 +22,7 @@ class StickersDataProvider: NSObject {
             return
         }
 
-        let packs = stickerPacks//Array(stickerPacks.reversed())
+        let packs = stickerPacks
 		
         if let _ = UserDefaults.standard.object(forKey: kFirstTimeKey) as? Int {
         } else {
@@ -34,7 +34,7 @@ class StickersDataProvider: NSObject {
         do {
             try encodedData.write(to: storePathURL)
         } catch {
-//             print("write file error: \(error)")
+			// Catch errors
         }
     }
     
@@ -115,7 +115,6 @@ extension StickersDataProvider {
 			
             for sticker in (pack.stickers as! [ROKOSticker]) {
                 let urls = [FileManager.imageURL(forSticker: sticker, inPack: pack),
-//                            FileManager.iconURL(forSticker: sticker, inPack: pack),
                             FileManager.packIconURL(forPack: pack),
                             FileManager.selectedPackIconURL(forPack: pack)]
                 
@@ -128,7 +127,6 @@ extension StickersDataProvider {
                     let destinationURL = URL.getWarmStickersDirectory
                     let atPath = url.path
                     let toPath = destinationURL.path.appending("/").appending(newName)
-//                  print("copy to: \(toPath)")
                     do {
                         try FileManager.default.copyItem(atPath: atPath, toPath: toPath)
                     } catch {
@@ -148,72 +146,60 @@ extension StickersDataProvider {
     
 	func getWarmCache(completionBlock:@escaping ()->Void) {
 		let cachePath = FileManager.stickerPackCacheURL()
-//		print ("Folder: \(cachePath)")
 		let cacheMarker = cachePath.appendingPathComponent("marker")
 		if FileManager.default.fileExists(atPath: cacheMarker.path) {
 			completionBlock()
 			return
 		}
 		NSDictionary().write(to: cacheMarker, atomically: true)
-//        if let _ = UserDefaults.standard.object(forKey: kStickersWarmCacheKey) as? Bool {
-//            return
-//        }
-		
-//        UserDefaults.standard.set(true, forKey: kStickersWarmCacheKey)
 		
         let docPath = Bundle.main.resourcePath!
         let fileManager = FileManager.default
         let dataFile = docPath.appending("/").appending(kStickersDataFile)
-//        print(dataFile)
         if fileManager.fileExists(atPath: dataFile) {
             do {
                 let toPath = URL.getStickersDirectory.path.appending("/").appending(kStickersDataFile)
                 try fileManager.copyItem(atPath: dataFile, toPath: toPath)
             } catch {
-//                print("copy \(kStickersDataFile) error: \(error)")
+				// Catch errors
             }
-            
-//			DispatchQueue.global(qos: .background).async {
-                do {
-                    let filesFromBundle = try fileManager.contentsOfDirectory(atPath: docPath)
-                    let stickerFiles = filesFromBundle.filter{ $0.hasSuffix(kStickersExtensionName) }
-                    for stickerFile in stickerFiles {
-                        guard stickerFile != kStickersDataFile else {
-                            continue
-                        }
-                        let atPath = docPath.appending("/").appending(stickerFile)
-                        
-                        let array = stickerFile.components(separatedBy: ".")
-                        let packName = array[0]
-                        let stickerName = array[1]
-                        
-                        let paths = fileManager.urls(for: .cachesDirectory, in:.userDomainMask)
-                        let newDirectory = paths.first!.appendingPathComponent(kStickersDirectoryName, isDirectory: true).appendingPathComponent(packName, isDirectory: true)
-                        
-                        if !fileManager.fileExists(atPath: newDirectory.path) {
-                            do {
-                                try fileManager.createDirectory(at: newDirectory, withIntermediateDirectories: true, attributes: nil)
-                            } catch {
-                            }
-                        }
-                        
-                        let newStickerName = "\(stickerName).png"
-                        let toPath = newDirectory.appendingPathComponent(newStickerName).path
-                        do {
-                            try fileManager.copyItem(atPath: atPath, toPath: toPath)
-                        } catch {
-//                            print("copy \(stickerFile) error: \(error)")
-                        }
-                    }
-					DispatchQueue.main.async {
-						completionBlock()
+			do {
+				let filesFromBundle = try fileManager.contentsOfDirectory(atPath: docPath)
+				let stickerFiles = filesFromBundle.filter{ $0.hasSuffix(kStickersExtensionName) }
+				for stickerFile in stickerFiles {
+					guard stickerFile != kStickersDataFile else {
+						continue
 					}
-                } catch {
-//                    print("write file error: \(error)")
-                }
-//            }
-				
-        }
-    }
-    
+					let atPath = docPath.appending("/").appending(stickerFile)
+					
+					let array = stickerFile.components(separatedBy: ".")
+					let packName = array[0]
+					let stickerName = array[1]
+					
+					let paths = fileManager.urls(for: .cachesDirectory, in:.userDomainMask)
+					let newDirectory = paths.first!.appendingPathComponent(kStickersDirectoryName, isDirectory: true).appendingPathComponent(packName, isDirectory: true)
+					
+					if !fileManager.fileExists(atPath: newDirectory.path) {
+						do {
+							try fileManager.createDirectory(at: newDirectory, withIntermediateDirectories: true, attributes: nil)
+						} catch {
+						}
+					}
+					
+					let newStickerName = "\(stickerName).png"
+					let toPath = newDirectory.appendingPathComponent(newStickerName).path
+					do {
+						try fileManager.copyItem(atPath: atPath, toPath: toPath)
+					} catch {
+						// Catch errors
+					}
+				}
+				DispatchQueue.main.async {
+					completionBlock()
+				}
+			} catch {
+				// Catch errors
+			}
+		}
+	}
 }

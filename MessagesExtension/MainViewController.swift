@@ -64,7 +64,6 @@ class MainViewController: MSMessagesAppViewController {
     override func viewWillAppear(_ animated: Bool) {
         if firstTime {
             firstTime = false
-            //createStickerBrowser()
             configureStikers()
         } else {
             ROKOLogger.addEvent("_ROKO.Active User", withParameters: nil)
@@ -106,7 +105,6 @@ class MainViewController: MSMessagesAppViewController {
         guard let item = item, let info = info, let packInfo = packInfo else { return }
         ROKOStickers.logStickerSelection(info, inPack: packInfo, withImageId: guid)
         ROKOStickers.logSaving(withStickers: [item], onImageWithId: guid, fromCamera: false)
-        //        print("EVENT SAVE STICKER - SEND")
         self.item = nil
         self.info = nil
         self.packInfo = nil
@@ -188,12 +186,8 @@ class MainViewController: MSMessagesAppViewController {
         let alertController = UIAlertController(title: String(format: kInfoAlertTitle, version),
                                                 message: kInfoAlertMessage,
                                                 preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default) {
-            (result : UIAlertAction) -> Void in
-            print("Dismiss")
-        }
-        
+		
+		let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }
