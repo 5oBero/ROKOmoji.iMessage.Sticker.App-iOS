@@ -26,11 +26,11 @@ class MainViewController: MSMessagesAppViewController {
     var dataSource: ROKOPortalStickersDataSource!
     var stickersDataProvider = StickersDataProvider()
     var guid = NSUUID().uuidString
-    var deepLink: String? = nil
     var stickersConfig = StickersConfig(stickerSize: .small, backgroundColor: #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1), logoFileName: "rokolabs_logo")
     var firstTime = true
     
     // For Analitics
+	var linkManager: ROKOLinkManager?
     var info: RLStickerInfo?
     var packInfo: RLStickerPackInfo?
     var item: ROKOStickersEventItem?
@@ -64,11 +64,14 @@ class MainViewController: MSMessagesAppViewController {
     override func viewWillAppear(_ animated: Bool) {
         if firstTime {
             firstTime = false
-            //createStickerBrowser()
             configureStikers()
         } else {
             ROKOLogger.addEvent("_ROKO.Active User", withParameters: nil)
         }
+		
+		// Workaround for deeplinks receiving
+		NotificationCenter.default.post(Notification.init(name: .UIApplicationDidBecomeActive))
+		
         activateTime = Date()
         self.sendSavedEvent()
     }
@@ -102,7 +105,6 @@ class MainViewController: MSMessagesAppViewController {
         guard let item = item, let info = info, let packInfo = packInfo else { return }
         ROKOStickers.logStickerSelection(info, inPack: packInfo, withImageId: guid)
         ROKOStickers.logSaving(withStickers: [item], onImageWithId: guid, fromCamera: false)
-        //        print("EVENT SAVE STICKER - SEND")
         self.item = nil
         self.info = nil
         self.packInfo = nil
@@ -131,7 +133,9 @@ class MainViewController: MSMessagesAppViewController {
     func configureStikers(){
         ROKOComponentManager.shared().apiToken = kAPIToken
         ROKOComponentManager.shared().baseURL = kBaseURL
-        
+		
+		linkManager = ROKOLinkManager.init(manager: ROKOComponentManager.shared())
+		
         stickersPackPanel.delegate = self
         stickersPanel.delegate = self
         
@@ -182,12 +186,8 @@ class MainViewController: MSMessagesAppViewController {
         let alertController = UIAlertController(title: String(format: kInfoAlertTitle, version),
                                                 message: kInfoAlertMessage,
                                                 preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default) {
-            (result : UIAlertAction) -> Void in
-            print("Dismiss")
-        }
-        
+		
+		let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }

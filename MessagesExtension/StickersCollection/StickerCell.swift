@@ -59,7 +59,7 @@ class StickerCell: UICollectionViewCell {
 				stickerView.sticker = nil;
 			}
 		} catch {
-//            print("error: \(error)")
+			// Catch errors
         }
     }
     
