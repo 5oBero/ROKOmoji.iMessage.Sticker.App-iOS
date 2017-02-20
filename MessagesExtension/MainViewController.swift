@@ -153,6 +153,8 @@ class MainViewController: MSMessagesAppViewController {
             
             stickersPackPanel.reloadCollection()
             stickersPanel.reloadCollection()
+			
+			self.stickersPanel.didLoadStickers = true
         }
         
         dataSource =  ROKOPortalStickersDataSource(manager: ROKOComponentManager.shared())
@@ -160,6 +162,14 @@ class MainViewController: MSMessagesAppViewController {
             if error == nil {
                 if let stickerPacksRaw = object as? [ROKOStickerPack] {
                     let stickerPacks = Array(stickerPacksRaw.prefix(kMaxPackCount))
+					
+					// If the same packs provided by portal there is nothing to reload
+					if let loadedPacks = self?.stickersDataProvider.stickerPacks {
+						if stickerPacks.elementsEqual(loadedPacks) {
+							return
+						}
+					}
+					
                     self?.stickersDataProvider.initWithDataSource(stickerPacks: stickerPacks)
                     
                     var packsCount = stickerPacks.count
@@ -171,6 +181,8 @@ class MainViewController: MSMessagesAppViewController {
                                     self?.stickersDataProvider.stickerPacks = stickerPacks
                                     self?.stickersPanel.reloadCollection()
                                     self?.stickersPackPanel.reloadCollection()
+									
+									self?.stickersPanel.didLoadStickers = true
                                     //                                    self?.stickersDataProvider.saveWarmCache()
                                 }
                             }

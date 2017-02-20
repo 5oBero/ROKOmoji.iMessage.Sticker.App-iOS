@@ -10,6 +10,8 @@ import UIKit
 import ROKOMobi
 import Messages
 
+let scrollingStateKey = "scrollingStateKey"
+
 protocol MyStickersPanelDelegate: class {
     func didSelect(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int)
     func didDrag(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int)
@@ -19,7 +21,9 @@ class MyStickersPanel: UIView {
     static let stickerIconSize: CGFloat = 100.0
     static let stickerSpacing: CGFloat = 17.0
     let sizeDelta: CGFloat = -MyStickersPanel.stickerSpacing
-    
+	
+	var didLoadStickers: Bool = false
+	
     var dataSource: StickerDataSource?
     weak var delegate: MyStickersPanelDelegate?
     var collectionView: UICollectionView!
@@ -74,6 +78,9 @@ class MyStickersPanel: UIView {
         let nib = UINib(nibName: StickerCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: StickerCell.identifier)
         self.addSubview(collectionView)
+		
+		// Observation is needed to update scrolling position from previous run
+		self.collectionView.addObserver(self, forKeyPath: "contentSize", options: [.old, .new], context: nil)
     }
     
     func configure(withDatasource: StickerDataSource) {
@@ -83,6 +90,33 @@ class MyStickersPanel: UIView {
     func reloadCollection() {
         collectionView.reloadData()
     }
+	
+	deinit {
+		self.collectionView.removeObserver(self, forKeyPath: "contentSize")
+	}
+	
+	// MARK: Scroll state saving and restoring support
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		guard let oldSize = change?[.oldKey] as? CGSize else {
+			return
+		}
+		
+		guard let newSize = change?[.newKey] as? CGSize else {
+			return
+		}
+		
+		if oldSize.height == 0.0 && newSize.height != 0 {
+			updateScrollingState()
+		}
+	}
+	
+	func updateScrollingState() {
+		guard let yContentOffset = UserDefaults.standard.object(forKey: scrollingStateKey) as? CGFloat else {
+			return
+		}
+		
+		collectionView.contentOffset.y = yContentOffset
+	}
 }
 
 extension MyStickersPanel: UICollectionViewDataSource {
@@ -120,6 +154,20 @@ extension MyStickersPanel : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return iconSize
     }
+}
+
+// MARK: UIScrollViewDelegate
+extension MyStickersPanel: UIScrollViewDelegate {
+	// Saving content offset to restore it on the next launch
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		if didLoadStickers == false || scrollView.contentSize.height == 0.0 {
+			return
+		}
+		
+		DispatchQueue.global().async {
+			UserDefaults.standard.set(scrollView.contentOffset.y, forKey: scrollingStateKey)
+		}
+	}
 }
 
 extension MyStickersPanel : StickerCellDelegate {
