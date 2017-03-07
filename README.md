@@ -21,6 +21,9 @@ No need to spend time creating features from scratch or paying for a developer. 
 
 Want to see these features in action? Then check out our client apps "Aminal Stickers" and "ZAG Heroez" in the iTunes App Store.
 
+ZAG Heroez - https://itunes.apple.com/us/app/zag-heroez/id1185630903
+Aminal Stickers - https://itunes.apple.com/us/app/aminal-stickers/id1162014434?mt=8
+
 ## Xcode Project Settings
 Open workspace in Xcode:
 
