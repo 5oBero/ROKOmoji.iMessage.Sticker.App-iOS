@@ -1,4 +1,4 @@
-# ROKOMoji.iMessage
+# ROKOmoji iMessage Sticker App (iOS)
 Build your own iMessage extension
 
 ## About ROKOmoji.iMessage
