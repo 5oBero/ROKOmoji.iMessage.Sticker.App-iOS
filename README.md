@@ -2,7 +2,7 @@
 Create your own iMessage Sticker App for free with ROKO Labs! We've open sourced our iMessage sticker app so you can easily build your own to promote your company and brand!
 
 The application also utilizes ROKO Mobi Stickers SDK - http://roko.mobi/stickers - which will help you manage your iMessage Sticker App through:
-=
+
 1. In-depth sticker analytics and reporting
 2. Upload and send stickers and GIFS straight to your iMessage app w/o submitting another build to Apple 
 3. It's all free! 
