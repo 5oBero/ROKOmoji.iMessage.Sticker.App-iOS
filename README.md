@@ -7,6 +7,7 @@ Should you have any questions or concerns, feel free to email us at help@rokolab
 
 ## Custom App Features
 No need to spend time creating features from scratch or paying for a developer. Our open-sourced app includes multiple types of custom app features.
+
 1. We support multiple sticker packs within one app
 2. Custom backgrounds
 3. Logo branding
