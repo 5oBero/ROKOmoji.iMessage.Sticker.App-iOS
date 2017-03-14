@@ -169,21 +169,27 @@ class MainViewController: MSMessagesAppViewController {
 							return
 						}
 					}
-					
-                    self?.stickersDataProvider.initWithDataSource(stickerPacks: stickerPacks)
                     
                     var packsCount = stickerPacks.count
                     for pack in stickerPacks {
                         StickerCache.load(stickerPack: pack) { (pack) in
                             packsCount -= 1
+							
                             if packsCount == 0 {
                                 DispatchQueue.main.async() { () -> Void in
+									// Provider initialization to save stickers packs data file to the cache folder
+									// to avoid premature pack activation on the next launch
+									self?.stickersDataProvider.initWithDataSource(stickerPacks: stickerPacks)
+									
                                     self?.stickersDataProvider.stickerPacks = stickerPacks
                                     self?.stickersPanel.reloadCollection()
                                     self?.stickersPackPanel.reloadCollection()
 									
 									self?.stickersPanel.didLoadStickers = true
-                                    //                                    self?.stickersDataProvider.saveWarmCache()
+									
+									// This line of code is needed to save warm cache for the future use as default pack
+									// Uncomment it to save sticker pack. Path to the warm cache folder will be printed to the console
+                                    // self?.stickersDataProvider.saveWarmCache()
                                 }
                             }
                         }
