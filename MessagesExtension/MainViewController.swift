@@ -234,36 +234,36 @@ extension MainViewController: StickerPacksPanelDelegate {
 extension MainViewController: MyStickersPanelDelegate {
     func didSelect(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int) {
         info = RLStickerInfo()
-        info!.stickerID = stickerInfo.imageInfo.objectId as Int
+        info!.stickerID = stickerInfo.imageInfo.objectId as! Int
         info!.scale = CGFloat(stickerInfo.scaleFactor)
         info!.positionInPack = positionInPack
         
         packInfo = RLStickerPackInfo()
-        packInfo!.packID = pack.objectId as Int
+        packInfo!.packID = pack.objectId as! Int
         packInfo!.title = pack.name
         
         item = ROKOStickersEventItem()
-        item!.stickerId = stickerInfo.objectId as Int
-        item!.stickerPackId = pack.objectId as Int
+        item!.stickerId = stickerInfo.objectId as! Int
+        item!.stickerPackId = pack.objectId as! Int
         item!.stickerPackName = pack.name
         item!.positionInPack = positionInPack
     }
     
     func didDrag(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int) {
         let info = RLStickerInfo()
-        info.stickerID = stickerInfo.imageInfo.objectId as Int
+        info.stickerID = stickerInfo.imageInfo.objectId as! Int
         info.scale = CGFloat(stickerInfo.scaleFactor)
         info.positionInPack = positionInPack
         
         let packInfo = RLStickerPackInfo()
-        packInfo.packID = pack.objectId as Int
+        packInfo.packID = pack.objectId as! Int
         packInfo.title = pack.name
         ROKOStickers.logStickerSelection(info, inPack: packInfo, withImageId: guid)
         
         
         let item = ROKOStickersEventItem()
-        item.stickerId = stickerInfo.objectId as Int
-        item.stickerPackId = pack.objectId as Int
+        item.stickerId = stickerInfo.objectId as! Int
+        item.stickerPackId = pack.objectId as! Int
         item.stickerPackName = pack.name
         item.positionInPack = positionInPack
         ROKOStickers.logSaving(withStickers: [item], onImageWithId: guid, fromCamera: false)

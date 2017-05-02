@@ -18,9 +18,9 @@ class StickerCache: NSObject {
 	class func load(stickerPack pack: ROKOStickerPack, completion closure: @escaping StickerLoadCompletion) {
 		let loader = StickerLoader(stickerPack: pack) {(pack) in
 			closure(pack)
-			activeLoadingSessions[pack.objectId as Int] = nil
+			activeLoadingSessions[pack.objectId as! Int] = nil
 		}
-		activeLoadingSessions[pack.objectId as Int] = loader
+		activeLoadingSessions[pack.objectId as! Int] = loader
 	}
 	
 	class func sticker(sticker: ROKOSticker, fromPack pack:ROKOStickerPack) -> UIImage? {
