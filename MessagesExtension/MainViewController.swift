@@ -153,6 +153,8 @@ class MainViewController: MSMessagesAppViewController {
             
             stickersPackPanel.reloadCollection()
             stickersPanel.reloadCollection()
+			
+			self.stickersPanel.didLoadStickers = true
         }
         
         dataSource =  ROKOPortalStickersDataSource(manager: ROKOComponentManager.shared())
@@ -160,18 +162,34 @@ class MainViewController: MSMessagesAppViewController {
             if error == nil {
                 if let stickerPacksRaw = object as? [ROKOStickerPack] {
                     let stickerPacks = Array(stickerPacksRaw.prefix(kMaxPackCount))
-                    self?.stickersDataProvider.initWithDataSource(stickerPacks: stickerPacks)
+					
+					// If the same packs provided by portal there is nothing to reload
+					if let loadedPacks = self?.stickersDataProvider.stickerPacks {
+						if stickerPacks.elementsEqual(loadedPacks) {
+							return
+						}
+					}
                     
                     var packsCount = stickerPacks.count
                     for pack in stickerPacks {
                         StickerCache.load(stickerPack: pack) { (pack) in
                             packsCount -= 1
+							
                             if packsCount == 0 {
                                 DispatchQueue.main.async() { () -> Void in
+									// Provider initialization to save stickers packs data file to the cache folder
+									// to avoid premature pack activation on the next launch
+									self?.stickersDataProvider.initWithDataSource(stickerPacks: stickerPacks)
+									
                                     self?.stickersDataProvider.stickerPacks = stickerPacks
                                     self?.stickersPanel.reloadCollection()
                                     self?.stickersPackPanel.reloadCollection()
-                                    //                                    self?.stickersDataProvider.saveWarmCache()
+									
+									self?.stickersPanel.didLoadStickers = true
+									
+									// This line of code is needed to save warm cache for the future use as default pack
+									// Uncomment it to save sticker pack. Path to the warm cache folder will be printed to the console
+                                    // self?.stickersDataProvider.saveWarmCache()
                                 }
                             }
                         }
@@ -216,36 +234,36 @@ extension MainViewController: StickerPacksPanelDelegate {
 extension MainViewController: MyStickersPanelDelegate {
     func didSelect(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int) {
         info = RLStickerInfo()
-        info!.stickerID = stickerInfo.imageInfo.objectId as Int
+        info!.stickerID = stickerInfo.imageInfo.objectId as! Int
         info!.scale = CGFloat(stickerInfo.scaleFactor)
         info!.positionInPack = positionInPack
         
         packInfo = RLStickerPackInfo()
-        packInfo!.packID = pack.objectId as Int
+        packInfo!.packID = pack.objectId as! Int
         packInfo!.title = pack.name
         
         item = ROKOStickersEventItem()
-        item!.stickerId = stickerInfo.objectId as Int
-        item!.stickerPackId = pack.objectId as Int
+        item!.stickerId = stickerInfo.objectId as! Int
+        item!.stickerPackId = pack.objectId as! Int
         item!.stickerPackName = pack.name
         item!.positionInPack = positionInPack
     }
     
     func didDrag(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int) {
         let info = RLStickerInfo()
-        info.stickerID = stickerInfo.imageInfo.objectId as Int
+        info.stickerID = stickerInfo.imageInfo.objectId as! Int
         info.scale = CGFloat(stickerInfo.scaleFactor)
         info.positionInPack = positionInPack
         
         let packInfo = RLStickerPackInfo()
-        packInfo.packID = pack.objectId as Int
+        packInfo.packID = pack.objectId as! Int
         packInfo.title = pack.name
         ROKOStickers.logStickerSelection(info, inPack: packInfo, withImageId: guid)
         
         
         let item = ROKOStickersEventItem()
-        item.stickerId = stickerInfo.objectId as Int
-        item.stickerPackId = pack.objectId as Int
+        item.stickerId = stickerInfo.objectId as! Int
+        item.stickerPackId = pack.objectId as! Int
         item.stickerPackName = pack.name
         item.positionInPack = positionInPack
         ROKOStickers.logSaving(withStickers: [item], onImageWithId: guid, fromCamera: false)
