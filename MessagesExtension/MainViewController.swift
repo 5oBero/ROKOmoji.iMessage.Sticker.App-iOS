@@ -101,13 +101,6 @@ class MainViewController: MSMessagesAppViewController {
     
     override func didStartSending(_ message: MSMessage, conversation: MSConversation) {
         // Called when the user taps the send button.
-        
-        guard let item = item, let info = info, let packInfo = packInfo else { return }
-        ROKOStickers.logStickerSelection(info, inPack: packInfo, withImageId: guid)
-        ROKOStickers.logSaving(withStickers: [item], onImageWithId: guid, fromCamera: false)
-        self.item = nil
-        self.info = nil
-        self.packInfo = nil
     }
     
     override func didCancelSending(_ message: MSMessage, conversation: MSConversation) {
@@ -247,8 +240,15 @@ extension MainViewController: MyStickersPanelDelegate {
         item!.stickerPackId = pack.objectId as! Int
         item!.stickerPackName = pack.name
         item!.positionInPack = positionInPack
+		
+		guard let item = item, let info = info, let packInfo = packInfo else { return }
+		ROKOStickers.logStickerSelection(info, inPack: packInfo, withImageId: guid)
+		ROKOStickers.logSaving(withStickers: [item], onImageWithId: guid, fromCamera: false)
+		self.item = nil
+		self.info = nil
+		self.packInfo = nil
     }
-    
+	
     func didDrag(image: UIImage!, pack: ROKOStickerPack, stickerInfo: ROKOSticker, positionInPack: Int) {
         let info = RLStickerInfo()
         info.stickerID = stickerInfo.imageInfo.objectId as! Int
