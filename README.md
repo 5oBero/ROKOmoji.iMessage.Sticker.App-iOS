@@ -41,18 +41,15 @@ let kAPIToken = "Your_API_KEY_goes_here"
 ROKO Mobi provides app developers and product owners with a suite of tools to accelerate mobile development, engage and track customers, and measure their app's success. A few things we do:
 
 1. InstaBot (add a chatbot into your app)
-2. Refer-a-Friend
-3. Share
-4. User Analytics
-5. Promo codes
-6. Push notifications
-7. Stickers
+2. User Analytics
+3. Push notifications
+4. Stickers
 
 Learn more about features at:
 https://roko.mobi
 
 See here for ROKO Mobi documentation, interaction guides, and instructions:
-https://docs.roko.mobi/docs/setting-up-your-account
+https://docs.roko.mobi/docs/roko-imessage-ios-sticker-app
 
 ## Activate your New iMessage App
 Run application on device or simulator and follow the instructions on the main screen.
