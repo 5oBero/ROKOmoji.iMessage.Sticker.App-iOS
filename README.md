@@ -34,6 +34,8 @@ Open your `.workspace` file in Xcode:
     ```
     let kAPIToken = "Your_API_KEY_goes_here"
     ```
+		
+#### If you don't have an account yet, please email us at info@instabot.io and we'll get you set up!		
 
 ## About ROKO Mobi
 ROKO Mobi provides app developers and product owners with a suite of tools to accelerate mobile development, engage and track customers, and measure their app's success. A few things we do:
